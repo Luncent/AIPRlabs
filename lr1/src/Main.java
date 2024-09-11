@@ -56,9 +56,10 @@ public class Main extends Frame implements ActionListener{
         try {
             URL url = new URL("file:/"+path);
             Desktop.getDesktop().browse(url.toURI());
+            System.out.println("URL: "+url+" uri: "+url.toURI());
         }
         catch (Exception ex){
-            ex.fillInStackTrace();
+            System.out.println(ex);
         }
     }
 
@@ -124,10 +125,13 @@ public class Main extends Frame implements ActionListener{
             {
                 int keyWordIndex = htmlcontent.indexOf(keywords[j].trim().toLowerCase());
                 if(keyWordIndex>=0) {
-                    fileInfo.coincidences++;
                     int doubleDotIndex = findDoubleDotIndex(keyWordIndex, htmlcontent);
+                    System.out.println("keyword length: "+keywords[j].length()+" counted length: "+(doubleDotIndex-keyWordIndex));
                     int whiteSpaceIndex = findWhiteSpaceIndex(doubleDotIndex, htmlcontent);
-                    fileInfo.sum+=Double.parseDouble(htmlcontent.substring(doubleDotIndex+1,whiteSpaceIndex));
+                    if(keywords[j].length()==(doubleDotIndex-keyWordIndex)) {
+                        fileInfo.coincidences++;
+                        fileInfo.sum += Double.parseDouble(htmlcontent.substring(doubleDotIndex + 1, whiteSpaceIndex));
+                    }
                 }
             }
         }
@@ -156,7 +160,7 @@ public class Main extends Frame implements ActionListener{
 
     public int findWhiteSpaceIndex(int doubleDotIndex, String htmlContent){
         String part = htmlContent.substring(doubleDotIndex);
-        return part.indexOf(' ')+doubleDotIndex;
+        return part.indexOf(' ')!=-1 ? part.indexOf(' ')+doubleDotIndex : part.length()+doubleDotIndex;
     }
 
     public static void main(String[] args)

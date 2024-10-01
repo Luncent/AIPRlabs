@@ -111,6 +111,7 @@ public class Main extends Frame implements ActionListener{
                     con.getInputStream());
             BufferedOutputStream bos = new BufferedOutputStream(
                     new FileOutputStream(file));
+            
             String bhtml=""; //file content in byte array
 
             while ((i = bis.read()) != -1) {
@@ -121,14 +122,15 @@ public class Main extends Frame implements ActionListener{
             bis.close();
             String htmlcontent = (bhtml).toLowerCase(); //file content in string
             System.out.println("New url content is: "+htmlcontent);
-            for (int j=0;j<keywords.length;j++)
+            for(int j=0;j<keywords.length;j++)
             {
+                System.out.println("keyword: "+keywords[j].trim());
                 int keyWordIndex = htmlcontent.indexOf(keywords[j].trim().toLowerCase());
-                if(keyWordIndex>=0) {
+                if(keyWordIndex>=0 && htmlcontent.charAt(keyWordIndex-1)==' ') {
                     int doubleDotIndex = findDoubleDotIndex(keyWordIndex, htmlcontent);
-                    System.out.println("keyword length: "+keywords[j].length()+" counted length: "+(doubleDotIndex-keyWordIndex));
+                    System.out.println("keyword length: "+keywords[j].trim().length()+" counted length: "+(doubleDotIndex-keyWordIndex));
                     int whiteSpaceIndex = findWhiteSpaceIndex(doubleDotIndex, htmlcontent);
-                    if(keywords[j].length()==(doubleDotIndex-keyWordIndex)) {
+                    if(keywords[j].trim().length()==(doubleDotIndex-keyWordIndex)) {
                         fileInfo.coincidences++;
                         fileInfo.sum += Double.parseDouble(htmlcontent.substring(doubleDotIndex + 1, whiteSpaceIndex));
                     }

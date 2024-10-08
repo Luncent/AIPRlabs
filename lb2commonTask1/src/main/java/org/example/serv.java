@@ -13,11 +13,11 @@ public class serv extends Frame {
         {System.exit(0);}
         return super.handleEvent(evt);
     }
-   /* public boolean mouseDown(Event evt,int x,int y)//Обработчик //события от мыши
+    public boolean mouseDown(Event evt,int x,int y)//Обработчик //события от мыши
     {
         new clientThread().start();//Запуск потока клиента
         return(true);
-    }*/
+    }
     public static void main(String args[])
     {
         serv f=new serv();
@@ -27,42 +27,7 @@ public class serv extends Frame {
     }
 }
 
-class Account extends Thread{
-    List<Socket> clients= new ArrayList<>();
-    ServerSocket server;
-    private double balance = 1000;
-    public void run() {
-        try {
-            server = new ServerSocket(3001);//Номер сокета
-        } catch (Exception e) {
-            System.out.println("Ошибка соединения+" + e);
-        }
-        while (true) {
-            try (Socket client = server.accept(); //ожидание соединения с клиентом
-                 InputStreamReader isr = new InputStreamReader(client.getInputStream());
-                 BufferedReader br = new BufferedReader(isr);
-                 OutputStreamWriter osw = new OutputStreamWriter(client.getOutputStream());
-                 BufferedWriter bw = new BufferedWriter(osw)) {
-
-                String method = br.readLine();
-                if(method.equals("changeBalance")){
-                    double changeAmount = Double.parseDouble(br.readLine());
-                    balance+=changeAmount;
-                    bw.write(String.valueOf(balance));
-                }
-                else if(method.equals("giveBalance")){
-                    bw.write(String.valueOf(balance));
-                }
-                bw.newLine();
-                bw.flush();
-            } catch (Exception e) {
-                System.out.println("Ошибка  " + e);
-            }
-        }
-    }
-}
-
-/*class clientThread extends Thread{
+class clientThread extends Thread{
     BufferedReader br;
     Socket s=null;
     public clientThread() {
@@ -95,9 +60,9 @@ class Account extends Thread{
             }
         }
     }
-}*/
+}
 
-/*class Account extends Thread{
+class Account extends Thread{
     List<Socket> clients= new ArrayList<>();
     ServerSocket server;
     String amountstring;
@@ -110,8 +75,6 @@ class Account extends Thread{
         }
         while (true) {
             try (Socket client = server.accept(); //ожидание соединения с клиентом
-                 InputStreamReader isr = new InputStreamReader(client.getInputStream());
-                 BufferedReader br = new BufferedReader(isr);
                  OutputStreamWriter osw = new OutputStreamWriter(client.getOutputStream());
                  BufferedWriter bw = new BufferedWriter(osw)) {
 
@@ -131,4 +94,4 @@ class Account extends Thread{
             }
         }
     }
-}*/
+}

@@ -1,0 +1,1 @@
+SELECT * FROM dictionary WHERE LOWER(russian) = LOWER('да') OR english = LOWER('да')

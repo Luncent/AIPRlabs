@@ -16,13 +16,13 @@ public class Account{
             System.out.println("Ошибка соединения+" + e);
         }
         while (true) {
-            System.out.println("Waiting for clietn");
             try (Socket client = server.accept(); //ожидание соединения с клиентом
                  InputStreamReader isr = new InputStreamReader(client.getInputStream());
                  BufferedReader br = new BufferedReader(isr);
                  OutputStreamWriter osw = new OutputStreamWriter(client.getOutputStream());
                  BufferedWriter bw = new BufferedWriter(osw)) {
 
+                System.out.println("Client connected");
                 String method = br.readLine();
                 if (method.equals("changeBalance")) {
                     double changeAmount = Double.parseDouble(br.readLine());

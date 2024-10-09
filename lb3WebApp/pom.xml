@@ -37,6 +37,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
                 <configuration>
                     <outputDirectory>D:\TomCat\apache-tomcat-8.5.94-windows-x64\apache-tomcat-8.5.92\webapps</outputDirectory>
                 </configuration>

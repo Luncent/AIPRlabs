@@ -3,7 +3,7 @@ package org.example;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class ServletContainerContext implements ServletContextListener {
+public class MyServletContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         try {

@@ -23,4 +23,7 @@
     </h4>
 
 </form>
+
+<img src="<%=request.getContextPath()%>/getImage">
+
 </body>

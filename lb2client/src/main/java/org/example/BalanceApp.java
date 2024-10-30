@@ -63,7 +63,7 @@ public class BalanceApp extends Frame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     Double.parseDouble(changeField.getText());
-                    Socket server = new Socket("127.0.0.1", 3001);
+                    Socket server = new Socket(ipAddress, port);
                     bw = new BufferedWriter(new OutputStreamWriter(server.getOutputStream()));
                     br = new BufferedReader(new InputStreamReader(server.getInputStream()));
 

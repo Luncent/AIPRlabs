@@ -8,7 +8,7 @@ public class Account{
     private static ServerSocket server;
     private static double balance = 1000;
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         try {
             server = new ServerSocket(3001);//Номер сокета

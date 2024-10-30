@@ -20,13 +20,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>getPowerPoint</servlet-name>
-        <servlet-class>org.example.getPowerPoint</servlet-class>
+        <servlet-name>getZipArchive</servlet-name>
+        <servlet-class>org.example.getZipArchive</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>getPowerPoint</servlet-name>
-        <url-pattern>/getPowerPoint</url-pattern>
+        <servlet-name>getZipArchive</servlet-name>
+        <url-pattern>/getZipArchive</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

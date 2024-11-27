@@ -9,7 +9,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class getZipArchiveServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String presentationPath = getServletContext().getRealPath("/WEB-INF/presentation.pptx");
@@ -22,7 +21,6 @@ public class getZipArchiveServlet extends HttpServlet {
             zos.flush();
         }
     }
-
 
     private void addFileToArchive(ZipOutputStream zos, String filePath){
         File file = new File(filePath);

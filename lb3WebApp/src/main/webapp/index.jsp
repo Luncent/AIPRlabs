@@ -12,7 +12,6 @@
 <br>
 <br>
 <form name="frm" method="Get" action="MyServlet">
-
     <Font color="blue" size="6"> Введите русское слово:</Font>
     <Input type="Text" name="txt" value="<%=request.getAttribute("translatedRuWord") == null ? "" : request.getAttribute("translatedRuWord")%>"/>
     <br>
@@ -21,7 +20,6 @@
     <input type="text" name ="trans" value="<%=request.getAttribute("translatedEnWord") == null ? "" : request.getAttribute("translatedEnWord")%>"/><br>
     <h4>Кликни здесь для получения перевода :<Input type="submit" value="Перевести"/>
     </h4>
-
 </form>
 
 <img src="<%=request.getContextPath()%>/getImage">

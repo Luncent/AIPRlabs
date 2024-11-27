@@ -1,0 +1,5 @@
+hello 234 bye 56
+world address computer
+66 bird 345
+3 4 8
+wsimport -keep -p cont http://localhost:8078/WebServiceProj?wsdl

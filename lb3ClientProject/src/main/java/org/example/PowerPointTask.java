@@ -60,10 +60,10 @@ public class PowerPointTask {
                 File newFile = new File(dir, zipEntry.getName());
                 fileNames.add(zipEntry.getName());
                 try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(newFile))) {
-                    byte[] buffer = new byte[4096]; // Увеличенный размер буфера
+                    byte[] buffer = new byte[4096];
                     int length;
                     while ((length = zis.read(buffer)) > 0) {
-                        bos.write(buffer, 0, length); // Записываем только прочитанные байты
+                        bos.write(buffer, 0, length);
                     }
                 }
                 zis.closeEntry();
